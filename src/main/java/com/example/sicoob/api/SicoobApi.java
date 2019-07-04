@@ -35,44 +35,49 @@ public class SicoobApi {
 	}
 	
 	@GetMapping("/pessoas")
-	@ApiOperation(value = "Recupera todas as pessoas da base", 
-		notes = "Multiplos valores da entidade Pessoa", 
-		responseContainer = "List")
+	@ApiOperation(value = "Recupera todas as pessoas da base")
 	public List<Pessoa> getPessoas() {
 		return pessoaDao.getPessoas();
 	}
 	
 	@PostMapping("/pessoas")
+	@ApiOperation(value = "Inclui uma entidade pessoa a base de dados")
 	public void incluirPessoa(@RequestBody Pessoa pessoa) {
 		pessoaDao.incluirPessoa(pessoa);
 	}
 
 	@DeleteMapping("/pessoas/{id}")
+	@ApiOperation(value = "Exclui uma pessoa localizada pelo parâmetro id")
 	public void excluirPessoa(@PathVariable Integer id) {
 		pessoaDao.excluirPessoa(id);
 	}
 	
 	@DeleteMapping("/enderecos/{id}")
+	@ApiOperation(value = "Exclui um endereço localizado pelo parâmetro id")
 	public void excluirEndereco(@PathVariable Integer id) {
 		enderecoDao.excluirEndereco(id);
 	}
 	
 	@PostMapping("/endereco")
+	@ApiOperation(value = "Inclui uma entidade endereço a base de dados")
 	public void incluirEndereco(@RequestBody Endereco endereco) {
 		enderecoDao.incluirEndereco(endereco);
 	}
 	
 	@GetMapping("/pessoas/{id}/enderecos")
+	@ApiOperation(value = "Recupera todos os endereços de uma pessoa identificada pelo ID")
 	public List<Endereco> getEnderecos(@PathVariable Integer id) {
 		return enderecoDao.getEnderecos(id);
 	}
 	
 	@GetMapping("/enderecos")
+	@ApiOperation(value = "Recupera todos os endereços da base")
 	public List<Endereco> getEnderecos() {
 		return enderecoDao.getEnderecos();
 	}
 	
 	@GetMapping("/pessoas/{id}")
+	@ApiOperation(value = "Recupera uma pessoa da base localizada pelo ID")
 	public Pessoa getPessoa(@PathVariable Integer id) {
 		return pessoaDao.getPessoa(id);
 	}

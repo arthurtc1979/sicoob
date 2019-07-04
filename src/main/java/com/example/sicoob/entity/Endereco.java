@@ -12,8 +12,14 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Pessoa pessoa;
+	
+	public Endereco() { }
+	
+	public Endereco(Integer id) {
+		this.id = id;
+	}
 	
 	public Integer getId() {
 		return id;
